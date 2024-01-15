@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import Boxes from './components/Boxes'
+import Treker from './components/Treker'
 
-function App() {
+const App = () => {
+  let styleArr = [
+    {width: "300px", height: "150px", backgroungColor: "red"}
+  ]
+
+  let [state, setNum] = useState(0);
+  let plus = () => {
+    setNum(state + 1)
+  }
+  let minus = () => {
+    setNum(state - 1)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Boxes styleArr={styleArr} />
+      <Treker state={state} plus={plus} minus={minus}  />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
+
+
